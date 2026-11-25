@@ -1,0 +1,31 @@
+---
+- name: Install and configure Apache webservers
+  hosts: webservers
+  become: yes
+
+  tasks:
+    - name: Install Apache
+      apt:
+        name: apache2
+        state: present
+        update_cache: yes
+
+    - name: Ensure Apache is running
+      service:
+        name: apache2
+        state: started
+        enabled: yes
+
+    - name: Deploy webpage using Ansible
+      copy:
+        content: |
+          <html>
+          <head><title>DevOps Automation</title></head>
+          <body>
+          <h1>Automated Deployment Successful!</h1>
+          <p>This webpage was deployed using Ansible.</p>
+          <p>Server managed by our DevOps automation project.</p>
+          </body>
+          </html>
+        dest: /var/www/html/ansible.html
+        mode: '0644'

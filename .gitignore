@@ -1,0 +1,21 @@
+# Terraform
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+*.tfplan
+.terraform.lock.hcl.backup
+
+# AWS credentials
+.aws/
+*.pem
+*.key
+credentials
+
+# SSH private keys
+ansible_key*
+id_rsa
+id_ed25519
+
+# Temporary files
+*.log
+*.tmp
